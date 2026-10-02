@@ -1,0 +1,15 @@
+{
+  "name": "eco-envase-stock",
+  "version": "1.0.0",
+  "description": "Sistema de Control de Stock, Ventas, Balances e Informes para Eco Envase",
+  "scripts": {
+    "install:all": "cd server && npm.cmd install && cd ../client && npm.cmd install",
+    "dev:server": "cd server && npm.cmd run dev",
+    "dev:client": "cd client && npm.cmd run dev",
+    "dev": "npm.cmd run dev:server",
+    "start": "cd server && npm.cmd start"
+  },
+  "keywords": ["stock", "inventario", "eco-envase", "postgresql", "react"],
+  "author": "Eco Envase",
+  "license": "ISC"
+}
