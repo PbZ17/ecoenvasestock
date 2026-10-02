@@ -25,13 +25,26 @@ app.use('/uploads', express.static(uploadsDir));
 // Rutas de API
 app.use('/api', apiRoutes);
 
-// Ruta de comprobación de salud del servidor
-app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    system: 'Eco Envase Stock API',
-    timestamp: new Date().toISOString(),
-  });
+// Ruta de comprobación de salud del servidor y base de datos
+app.get('/api/health', async (req, res) => {
+  try {
+    const dbTest = await db.query('SELECT 1 as ok, NOW() as server_time');
+    res.json({
+      status: 'ok',
+      system: 'Eco Envase Stock API',
+      database: 'connected',
+      dbTime: dbTest.rows[0].server_time,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (dbErr) {
+    res.status(500).json({
+      status: 'error',
+      system: 'Eco Envase Stock API',
+      database: 'disconnected',
+      error: dbErr.message,
+      timestamp: new Date().toISOString(),
+    });
+  }
 });
 
 // Servir frontend React compilado en producción (client/dist)
