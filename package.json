@@ -1,0 +1,27 @@
+{
+  "name": "eco-envase-stock",
+  "version": "1.0.0",
+  "description": "Sistema de Control de Stock, Ventas, Balances e Informes para Eco Envase",
+  "main": "server/index.js",
+  "scripts": {
+    "build": "npm --prefix client install && npm --prefix client run build && npm --prefix server install",
+    "start": "node server/index.js",
+    "dev": "npm --prefix server run dev",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "install:all": "npm --prefix server install && npm --prefix client install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "stock",
+    "inventario",
+    "eco-envase",
+    "postgresql",
+    "react",
+    "railway"
+  ],
+  "author": "Eco Envase",
+  "license": "ISC"
+}
